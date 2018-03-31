@@ -4,6 +4,7 @@ import Utils from '../../utils'
 import UserStore from '../../stores/user'
 import _ from 'lodash'
 import MessagesStore from '../../stores/messages'
+import MessagesAction from '../../actions/messages'
 
 class UserList extends React.Component {
 
@@ -13,6 +14,10 @@ class UserList extends React.Component {
   }
 
   get initialState() {
+    return this.getStateFromStore()
+  }
+
+  getStateFromStore() {
     const allMessages = MessagesStore.getAllChats()
 
     const messageList = []
@@ -28,6 +33,19 @@ class UserList extends React.Component {
       openChatID: MessagesStore.getOpenChatUserID(),
       messageList: messageList,
     }
+  }
+  componentWillMount() {
+    MessagesStore.onChange(this.onStoreChange.bind(this))
+  }
+  componentWillUnmount() {
+    MessagesStore.offChange(this.onStoreChange.bind(this))
+  }
+  onStoreChange() {
+    this.setState(this.getStateFromStore())
+  }
+  //
+  changeOpenChat(id) {
+    MessagesAction.changeOpenChat(id)
   }
   render() {
     this.state.messageList.sort((a, b) => {
@@ -69,6 +87,7 @@ class UserList extends React.Component {
 
       return (
         <li
+          onClick={ this.changeOpenChat.bind(this, message.user.id) }
           className={ itemClasses }
           key={ message.user.id }
         >

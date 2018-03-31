@@ -12,8 +12,21 @@ class MessagesBox extends React.Component {
     this.state = this.initialState
   }
   get initialState() {
-    return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID()) // 変更箇所
+    return this.getStateFromStore()
   }
+  getStateFromStore() {
+    return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID())
+  }
+  componentWillMount() {
+    MessagesStore.onChange(this.onStoreChange.bind(this))
+  }
+  componentWillUnmount() {
+    MessagesStore.offChange(this.onStoreChange.bind(this))
+  }
+  onStoreChange() {
+    this.setState(this.getStateFromStore())
+  }
+  //
   render() {
     const messagesLength = this.state.messages.length
     const currentUserID = UserStore.user.id
