@@ -4,6 +4,7 @@ import MessagesStore from '../../stores/messages' // 追記
 import ReplyBox from '../../components/messages/replyBox'
 import UserStore from '../../stores/user'
 import Utils from '../../utils'
+// import MessagesAction from '../../actions/messages'
 
 class MessagesBox extends React.Component {
 
@@ -30,7 +31,7 @@ class MessagesBox extends React.Component {
   render() {
     const messagesLength = this.state.messages.length
     const currentUserID = UserStore.user.id
-  //  const messages_test = MessagesAction.getMessage()
+ //   const messages_test = MessagesAction.getMessage()
 
     const messages = this.state.messages.map((message, index) => { // stateからmessageを取り出す
       const messageClasses = classNames({
@@ -71,6 +72,7 @@ class MessagesBox extends React.Component {
         </div>
       )
   }
+
 }
 
 export default MessagesBox
