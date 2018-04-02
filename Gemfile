@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'byebug'
-gem 'pry-byebug'
 gem 'rails', '4.2.6'
 gem 'sqlite3'
 gem 'haml-rails'
@@ -15,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
