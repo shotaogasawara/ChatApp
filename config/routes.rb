@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  root 'messages#index'
+  namespace :api, { format: 'json' } do
+    resources :messages
+  end
+
+  resources :messages
+  root to: 'messages#index'
+
+#  root 'messages#index'
+
 end

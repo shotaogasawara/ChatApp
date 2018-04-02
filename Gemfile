@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'byebug'
+gem 'pry-byebug'
 gem 'rails', '4.2.6'
 gem 'sqlite3'
 gem 'haml-rails'
