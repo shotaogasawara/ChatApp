@@ -1,0 +1,38 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #fff;
+}
+
+.sign_up_wrapper, .login_wrapper {
+  padding-top: 70px;
+}
+
+.form_wrapper {
+  float: left;
+  width: 320px;
+  margin-left: 9%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.new_user_btn, .login_btn {
+  width: 100%;
+}
+
+.new_user_title, .login_title, .edit_user_title {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+img {
+  vertical-align: middle;
+}
