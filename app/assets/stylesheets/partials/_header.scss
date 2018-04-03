@@ -1,9 +1,92 @@
+//.header {
+//  height: 60px;
+//  background: #2AADE5;
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  z-index: 998;
+//}
+
+/* header */
 .header {
-  height: 60px;
-  background: #2AADE5;
-  position: absolute;
+  height: 50px;
+  font-size: 1.15em;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 998;
+}
+
+.header-left {
+  float: left;
+  line-height: 50px;
+  padding-left: 30px;
+}
+
+.header-right {
+  float: right;
+  line-height: 50px;
+  padding-right: 30px;
+}
+
+.header-logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.header-logo-link {
+  color: #000;
+}
+
+.nav-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nav-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nav>li {
+  position: relative;
+  display: block;
+}
+
+.search-user-btn a {
+  color: #5e5e5e;
+}
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
