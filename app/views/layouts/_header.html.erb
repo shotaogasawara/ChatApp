@@ -1,22 +1,25 @@
 <header class="header">
   <div class="header-left">
     <div class="header-logo">
-      <%= link_to "ChatApp", "/", class: "header-logo-link"  %>
+      <%= link_to "ChatApp", "/", class: "header-logo-link" %>
     </div>
   </div>
+
   <div class="header-right">
     <ul class="nav nav-tabs">
       <li class="search-user-btn" role="presentation"><a data-no-turbolink="true" href="/users/search">ユーザーを探す</a></li>
-      <li class="dropdown" role="presentation">
-        <div aria-expanded="false" data-toggle="dropdown" role="button">
-          shota
+
+      <li class="dropdown ">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <%= @user.name %>
           <span class="caret"></span>
-        </div>
-        <ul class="dropdown-menu user-menu-box" role="menu">
-          <li class="user-menu-list" role="presentation"><a href="/users/67">マイページ</a></li>
-          <li class="user-menu-list" role="presentation"><a rel="nofollow" data-method="delete" href="/users/sign_out">ログアウト</a></li>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href=<%= "/users/#{@user.id}" %>>マイページ</a></li>
+          <li><a href="/users/sign_out">ログアウト</a></li>
         </ul>
       </li>
     </ul>
   </div>
+
 </header>
