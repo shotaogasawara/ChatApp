@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, { format: 'json' } do
     resources :messages
+    resources :users
   end
 
   resources :users, :only => [:index, :show]

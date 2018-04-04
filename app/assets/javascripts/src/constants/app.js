@@ -5,6 +5,7 @@ export const ActionTypes = keyMirror({
   SEND_MESSAGE: null,
   GET_MESSAGE: null,
   POST_MESSAGE: null,
+
 })
 
 export function CSRFToken() {
