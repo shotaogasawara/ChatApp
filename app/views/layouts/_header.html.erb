@@ -9,13 +9,13 @@
     <ul class="nav nav-tabs">
       <li class="search-user-btn" role="presentation"><a data-no-turbolink="true" href="/users/search">ユーザーを探す</a></li>
 
-      <li class="dropdown ">
+      <li class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <%= @user.name %>
+          <%= current_user.name %>
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href=<%= "/users/#{@user.id}" %>>マイページ</a></li>
+          <li><a href=<%= "/users/#{current_user.id}" %>>マイページ</a></li>
           <li><a href="/users/sign_out">ログアウト</a></li>
         </ul>
       </li>

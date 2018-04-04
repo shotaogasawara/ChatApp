@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
     # debugger
@@ -6,5 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def search
   end
 end
