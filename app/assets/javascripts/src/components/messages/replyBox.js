@@ -17,7 +17,7 @@ class ReplyBox extends React.Component {
   handleKeyDown(e) {
     if (e.keyCode === 13) {
       MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value) // メッセージをStoreして画面に表示する
-      MessagesAction.postMessage(this.state.value) // メッセージをpostする
+      MessagesAction.postMessage(this.state.value) // メッセージをrailsにpostする
       this.setState({
         value: '',
       })

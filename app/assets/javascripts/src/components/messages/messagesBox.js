@@ -4,7 +4,6 @@ import MessagesStore from '../../stores/messages' // 追記
 import ReplyBox from '../../components/messages/replyBox'
 import UserStore from '../../stores/user'
 import Utils from '../../utils'
-// import MessagesAction from '../../actions/messages'
 
 class MessagesBox extends React.Component {
 
@@ -12,21 +11,27 @@ class MessagesBox extends React.Component {
     super(props)
     this.state = this.initialState
   }
+
   get initialState() {
     return this.getStateFromStore()
   }
+
   getStateFromStore() {
     return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID())
   }
+
   componentWillMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))
   }
+
   componentWillUnmount() {
     MessagesStore.offChange(this.onStoreChange.bind(this))
   }
+
   onStoreChange() {
     this.setState(this.getStateFromStore())
   }
+
   //
   render() {
     const messagesLength = this.state.messages.length
@@ -39,12 +44,12 @@ class MessagesBox extends React.Component {
       })
 
       return (
-          <li key={ message.timestamp + '-' + message.from } className={ messageClasses }>
-            <div className='message-box__item__contents'>
-              { message.contents }
-            </div>
-          </li>
-        )
+        <li key={message.timestamp + '-' + message.from} className={messageClasses}>
+          <div className='message-box__item__contents'>
+            {message.contents}
+          </div>
+        </li>
+      )
     })
 
     const lastMessage = this.state.messages[messagesLength - 1]
@@ -53,22 +58,22 @@ class MessagesBox extends React.Component {
       if (this.state.lastAccess.recipient >= lastMessage.timestamp) {
         const date = Utils.getShortDate(lastMessage.timestamp)
         messages.push(
-            <li key='read' className='message-box__item message-box__item--read'>
-              <div className='message-box__item__contents'>
-                Read { date }
-              </div>
-            </li>
-          )
+          <li key='read' className='message-box__item message-box__item--read'>
+            <div className='message-box__item__contents'>
+              Read {date}
+            </div>
+          </li>
+        )
       }
     }
     return (
-        <div className='message-box'>
-          <ul className='message-box__list'>
-            { messages }
-          </ul>
-          <ReplyBox />,
-        </div>
-      )
+      <div className='message-box'>
+        <ul className='message-box__list'>
+          {messages}
+        </ul>
+        <ReplyBox />,
+      </div>
+    )
   }
 
 }

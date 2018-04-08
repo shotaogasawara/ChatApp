@@ -32,7 +32,7 @@ export default {
         .end((error, res) => {
           if (!error && res.status === 200) {
             const json = JSON.parse(res.text)
-            Dispatcher.handleServerAction({
+            Dispatcher.handleServerAction({ // Dipatcherにペイロードを渡す
               type: ActionTypes.POST_MESSAGE,
               message,
               json,

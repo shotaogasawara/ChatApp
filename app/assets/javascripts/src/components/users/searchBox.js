@@ -1,6 +1,5 @@
 import React from 'react'
-import MessagesAction from "../../actions/messages"
-import MessagesStore from "../../stores/messages"
+import SearchUserAction from '../../../src/actions/searchUser'
 
 export default class SearchBox extends React.Component {
 
@@ -8,24 +7,28 @@ export default class SearchBox extends React.Component {
     super(props)
     this.state = this.initialState
   }
-  //
+
+  // 検索ボックスの初期値をから文字に設定
   get initialState() {
     return {
-      value: '',
+      searchWord: '',
     }
   }
+
+  // Etnが押下されるとDBに検索をかける
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value) // メッセージをStoreして画面に表示する
-      MessagesAction.postMessage(this.state.value) // メッセージをpostする
-      this.setState({
-        value: '',
-      })
+      SearchUserAction.getSearchUserResult(this.state.searchWord) // 入力ワードのDB検索結果を取得
+      // this.setState({ // 検索ボックスは空にする
+      //   searchWord: '',
+      // })
     }
   }
-  updateValue(e) {
+
+  // stateの値を検索ボックスの値と同期させる
+  updateSearchWord(e) {
     this.setState({
-      value: e.target.value,
+      searchWord: e.target.value,
     })
   }
 
@@ -33,15 +36,11 @@ export default class SearchBox extends React.Component {
     return (
       <div className='search-box'>
         <input
-          value = { this.state.value }
-          onKeyDown = { this.handleKeyDown.bind(this) }
-          onChange = { this.updateValue.bind(this) }
-          className='reply-box__input'
-          placeholder='Type message to reply..'
+          onKeyDown={this.handleKeyDown.bind(this)}
+          onChange={this.updateSearchWord.bind(this)}
+          className='search-box__input'
+          placeholder='ユーザー名で検索しよう'
         />
-        <span className='reply-box__tip'>
-          Press <span className='reply-box__tip__button'>Enter</span> to send
-        </span>
       </div>
     )
   }

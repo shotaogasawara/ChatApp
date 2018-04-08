@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/search'
+  get 'api/users/search'
   devise_for :users
 
   namespace :api, { format: 'json' } do
