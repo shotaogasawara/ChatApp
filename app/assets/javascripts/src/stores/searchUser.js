@@ -7,6 +7,7 @@ class SearchUserResultStore extends BaseStore {
     if (!this.get('searchUserResultJson')) this.setSearchUser([])
     return this.get('searchUserResultJson')
   }
+
   setSearchUser(array) {
     this.set('searchUserResultJson', array)
   }

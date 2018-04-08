@@ -27,10 +27,24 @@ export default class SearchResult extends React.Component {
 
   // ユーザ一覧をリスト表示
   render() {
-    // const users = this.state.searchResult // app.jsで渡したsearchResultを代入
-    return (
-      <h1>{ this.state }</h1>
-      // <h1>test</h1>
-    )
+    if (this.state) { // stateがから文字の場合は除く
+      const users = this.state.searchUserResultJson.map((user) => {
+        return (
+          <li> {user.id} </li>
+        )
+      })
+
+      return (
+        <div className='users-list'>
+          <ul>
+            {users}
+          </ul>
+        </div>
+      )
+    } else {
+      return (
+        <h1>state = null</h1>
+      )
+    }
   }
 }
