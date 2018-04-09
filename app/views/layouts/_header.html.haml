@@ -1,0 +1,18 @@
+%body
+  %header.header
+    .header-left
+      .header-logo
+        = link_to "ChatApp", "/", class: "header-logo-link"
+    .header-right
+      %ul.nav.nav-tabs
+        %li.search-user-btn{:role => "presentation"}
+          %a{"data-no-turbolink" => "true", :href => "/users/search"} ユーザーを探す
+        %li.dropdown
+          %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            = current_user.name
+            %span.caret
+          %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+            %li
+              %a{:href => "<haml_loud"} "/users/\#{current_user.id}" &gt;マイページ
+            %li
+              %a{:href => "/users/sign_out"} ログアウト

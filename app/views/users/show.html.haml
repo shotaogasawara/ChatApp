@@ -1,0 +1,11 @@
+- provide(:title, @user.name)
+= render 'layouts/header'
+.user_profile
+  .user_profile_image
+    = image_tag 'default_image.jpg', class: "user_profile_image_id", alt: "Default image"
+  .user_profile_name
+    = @user.name
+  .user_profile_email
+    = @user.email
+  .user_profile_edit_btn
+    %a.btn.btn-info{:href => "/users/edit"} プロフィール編集
