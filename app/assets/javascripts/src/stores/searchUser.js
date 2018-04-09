@@ -28,7 +28,6 @@ SearchResultStore.dispatchToken = Dispatcher.register(payload => {
     case ActionTypes.GET_SEARCH_USER_RESULT:
       SearchResultStore.setSearchUser(action.json) // action.jsonはチェック済み
       SearchResultStore.emitChange()
-      const result = SearchResultStore.getSearchUser() // jsonを引っ張ってこれることを確認！
       break
   }
   return true
