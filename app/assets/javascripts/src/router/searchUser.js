@@ -6,7 +6,7 @@ export default class Router extends BaseRouter {
   register() {
     this.route('/users/search', this.decorateUsearch)
   }
-
+  debugger
   decorateUsearch(ctx, next) {
     (new ReactDecorator()).decorate('react-search', App)
     next()

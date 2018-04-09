@@ -8,7 +8,7 @@ export default class SearchResult extends React.Component {
     this.state = this.getStateFromStore()
   }
 
-  // 検索結果をストアから取得
+  // ストアから取得
   getStateFromStore() {
     return SearchResultStore.getSearchUser()
   }
@@ -27,23 +27,25 @@ export default class SearchResult extends React.Component {
 
   // ユーザ一覧をリスト表示
   render() {
-    if (this.state) { // stateがから文字の場合は除く
-      const users = this.state.searchUserResultJson.map((user) => {
+    const users = SearchResultStore.getSearchUser()
+    if (users.length) { // 空オブジェクトの場合は表示しない
+      const usersList = users.map(user => {
         return (
-          <li> {user.id} </li>
+          <li>{user.name}</li>
         )
       })
 
       return (
         <div className='users-list'>
           <ul>
-            {users}
+            {usersList}
           </ul>
         </div>
       )
     } else {
       return (
-        <h1>state = null</h1>
+        <div className='users-list'>
+        </div>
       )
     }
   }
