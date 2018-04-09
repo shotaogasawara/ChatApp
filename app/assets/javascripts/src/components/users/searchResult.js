@@ -25,9 +25,11 @@ export default class SearchResult extends React.Component {
     this.setState(this.getStateFromStore())
   }
   // 名前をクリックすると友達になれる
-  becomeFriend() {
-    debugger // 動くことは確認。
-    return null // 後で追記する
+  becomeFriend(user_id) {
+    debugger
+    if (confirm('本当に友達になりますか？') === true) {
+      location.href = `http://localhost:3000/friendships/create?to_user_id=${user_id}` //
+    }
   }
 
   // ユーザ一覧をリスト表示
@@ -36,7 +38,7 @@ export default class SearchResult extends React.Component {
     if (users.length) { // 空オブジェクトの場合は表示しない
       const usersList = users.map(user => {
         return (
-          <li onClick={this.becomeFriend.bind(this)}>{user.name}</li>
+          <li onClick={this.becomeFriend(user.id)}>{user.name}</li>
         )
       })
 
