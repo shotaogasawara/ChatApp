@@ -26,9 +26,8 @@ export default class SearchResult extends React.Component {
   }
   // 名前をクリックすると友達になれる
   becomeFriend(user_id) {
-    debugger
     if (confirm('本当に友達になりますか？') === true) {
-      location.href = `http://localhost:3000/friendships/create?to_user_id=${user_id}` //
+      location.replace(`http://localhost:3000/friendships/create?to_user_id=${user_id}`)
     }
   }
 
@@ -38,7 +37,7 @@ export default class SearchResult extends React.Component {
     if (users.length) { // 空オブジェクトの場合は表示しない
       const usersList = users.map(user => {
         return (
-          <li onClick={this.becomeFriend(user.id)}>{user.name}</li>
+          <li onClick={this.becomeFriend.bind(this, user.id)}>{user.name}</li>
         )
       })
 
