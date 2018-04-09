@@ -37,7 +37,7 @@ export default class SearchResult extends React.Component {
 
       return (
         <div className='users-list'>
-          <ul>
+          <ul className={'search_user_list'}>
             {usersList}
           </ul>
         </div>

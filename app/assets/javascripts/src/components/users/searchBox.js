@@ -34,14 +34,12 @@ export default class SearchBox extends React.Component {
 
   render() {
     return (
-      <div className='search-box'>
-        <input
-          onKeyDown={this.handleKeyDown.bind(this)}
-          onChange={this.updateSearchWord.bind(this)}
-          className='search-box__input'
-          placeholder='ユーザー名で検索しよう'
-        />
-      </div>
+      <input
+        className='search_form'
+        onKeyDown={this.handleKeyDown.bind(this)}
+        onChange={this.updateSearchWord.bind(this)}
+        placeholder='ユーザー名で検索しよう'
+      />
     )
   }
 }
