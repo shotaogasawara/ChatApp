@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'friendships/delete'
 
   get 'users/search'
+
+  get 'api/users/get_current_user'
   get 'api/users/search'
   devise_for :users
 

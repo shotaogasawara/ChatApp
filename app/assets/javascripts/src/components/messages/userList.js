@@ -1,22 +1,18 @@
 import React from 'react'
 import classNames from 'classnames'
 import Utils from '../../utils'
-import UserStore from '../../stores/user'
 import _ from 'lodash'
 import MessagesStore from '../../stores/messages'
 import MessagesAction from '../../actions/messages'
 
 class UserList extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = this.initialState
   }
-
   get initialState() {
     return this.getStateFromStore()
   }
-
   getStateFromStore() {
     const allMessages = MessagesStore.getAllChats()
 
@@ -75,9 +71,10 @@ class UserList extends React.Component {
 
       var isNewMessage = false
       if (message.lastAccess.currentUser < message.lastMessage.timestamp) {
-        isNewMessage = message.lastMessage.from !== UserStore.user.id
+        if (this.props.user.length !== 0) {
+          isNewMessage = message.lastMessage.from !== this.props.user.id
+        }
       }
-
       const itemClasses = classNames({
         'user-list__item': true,
         'clear': true,

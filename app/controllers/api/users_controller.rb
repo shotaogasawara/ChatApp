@@ -12,6 +12,10 @@ module Api
       # @users = User.where('name LIKE ?', "%#{sanitize_sql_like(str)}%") # 曖昧検索(サニタイズ有り)
       render json: @users
     end
+
+    def get_current_user
+      render json: current_user
+    end
   end
 
 end
