@@ -11,7 +11,6 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
 import {ActionTypes} from '../constants/app'
-import GetCurrentUserAction from '../actions/getCurrentUser'
 
 class CurrentUserStore extends BaseStore {
   addChangeListener(callback) {
@@ -45,13 +44,6 @@ UserStore.dispatchToken = Dispatcher.register(payload => {
   }
   return true
 })
-
-// var tmp = UserStore.getCurrentUser()
-// console.log(tmp)
-// GetCurrentUserAction.getCurrentUser().then(() => UserStore.getCurrentUser() )
-// tmp = UserStore.getCurrentUser() //
-// console.log(tmp)
-
 
 export default UserStore
 

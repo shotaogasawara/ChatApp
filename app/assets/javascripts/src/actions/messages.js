@@ -31,12 +31,13 @@ export default {
         .send({message: message})
         .end((error, res) => {
           if (!error && res.status === 200) {
-            const json = JSON.parse(res.text)
-            Dispatcher.handleServerAction({ // Dipatcherにペイロードを渡す
-              type: ActionTypes.POST_MESSAGE,
-              message,
-              json,
-            })
+            console.log('postに成功しました。')
+            // const json = JSON.parse(res.text)
+            // Dispatcher.handleServerAction({ // Dipatcherにペイロードを渡す
+            //   type: ActionTypes.POST_MESSAGE,
+            //   message,
+            //   json,
+            // })
           } else {
             reject(res)
           }

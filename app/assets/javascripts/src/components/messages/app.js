@@ -2,8 +2,7 @@ import React from 'react'
 import Header from './header'
 import UserList from './userList'
 import MessagesBox from './messagesBox'
-import MessagesStore from "../../stores/messages";
-import UserStore from "../../stores/user";
+import UserStore from '../../stores/user'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +31,7 @@ class App extends React.Component {
         <div className='app'>
           <Header />
           <UserList user={this.state.currentUser}/>
-          <MessagesBox />
+          <MessagesBox user={this.state.currentUser}/>
         </div>
       )
   }

@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classNames'
 import MessagesStore from '../../stores/messages' // 追記
 import ReplyBox from '../../components/messages/replyBox'
-import UserStore from '../../stores/user'
 import Utils from '../../utils'
 
 class MessagesBox extends React.Component {
@@ -35,7 +34,7 @@ class MessagesBox extends React.Component {
   //
   render() {
     const messagesLength = this.state.messages.length
-    const currentUserID = 3
+    const currentUserID = this.props.user.id
     const messages = this.state.messages.map((message, index) => { // stateからmessageを取り出す
       const messageClasses = classNames({
         'message-box__item': true,

@@ -7,8 +7,8 @@ module Api
     end
 
     def create
-      Message.create(message: params[:message])
-      redirect_to '/'
+      message = Message.create(message: params[:message])
+      render json: message
     end
   end
 

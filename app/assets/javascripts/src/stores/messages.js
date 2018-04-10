@@ -102,10 +102,11 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
     //
     case ActionTypes.SEND_MESSAGE:
       const userID = action.userID
+      const user = UserStore.getCurrentUser()
       messages[userID].messages.push({
         contents: action.message,
         timestamp: action.timestamp,
-        from: UserStore.user.id,
+        from: user.id,
       })
       messages[userID].lastAccess.currentUser = +new Date()
       MessagesStore.emitChange()
