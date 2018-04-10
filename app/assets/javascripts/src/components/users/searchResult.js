@@ -27,7 +27,7 @@ export default class SearchResult extends React.Component {
   // 名前をクリックすると友達になれる
   becomeFriend(user_id) {
     if (confirm('本当に友達になりますか？') === true) {
-      location.replace(`http://localhost:3000/friendships/create?to_user_id=${user_id}`)
+      location.replace(`http://localhost:3000/friendships/create?user_id=${user_id}`)
     }
   }
 
