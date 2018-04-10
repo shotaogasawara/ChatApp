@@ -6,9 +6,11 @@ class SearchUserResultStore extends BaseStore {
   addChangeListener(callback) {
     this.on('change', callback)
   }
+
   removeChangeListener(callback) {
     this.off('change', callback)
   }
+
   getSearchUser() {
     if (!this.get('searchUserResultJson')) this.setSearchUser({})
     return this.get('searchUserResultJson')

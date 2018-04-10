@@ -7,6 +7,8 @@ export const ActionTypes = keyMirror({
   POST_MESSAGE: null,
   GET_SEARCH_USER_RESULT: null,
   GET_CURRENT_USER: null,
+  GET_FRIEND: null,
+  GET_SEARCH_FRIEND_RESULT: null,
 })
 
 export function CSRFToken() {
@@ -19,4 +21,5 @@ export const APIEndpoints = {
   MESSAGE: APIRoot + '/messages.json',
   SEARCH_USER: APIRoot + '/users/search',
   CURRENT_USER: APIRoot + '/users/get_current_user',
+  SEARCH_FRIEND: APIRoot + '/friendships/get_friend',
 }

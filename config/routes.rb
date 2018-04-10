@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'friendships/create'
   get 'friendships/delete'
-
   get 'users/search'
 
+  get 'api/friendships/get_friend'
   get 'api/users/get_current_user'
   get 'api/users/search'
   devise_for :users

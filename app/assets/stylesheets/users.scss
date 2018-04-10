@@ -87,3 +87,36 @@
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+//友達検索機能
+
+.user-list {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  overflow: scroll;
+}
+
+//.user-list__item--active {
+//  background: rgba(0,0,0,0.05);
+//  color: #fff;
+//  position: relative;
+//  border-top: 1px solid rgba(0,0,0,0.1);
+//  margin-top: -1px;
+//}
+//
+//.user-list__item {
+//  padding: 14px 10px 14px 15px;
+//  border-bottom: 1px solid rgba(0,0,0,0.1);
+//  cursor: pointer;
+//}
+
+.user-list__item__details {
+  width: 220px;
+  float: left;
+  padding-left: 15px;
+}
