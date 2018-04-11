@@ -13,7 +13,7 @@ class FriendList extends React.Component {
   getStateFromStore() {
     return {
       friends: SearchFriendsStore.getFriends(),
-      ReceiverId: '', // ここ、初期値を取得したいところ
+      ReceiverId: '',
     }
   }
 
@@ -39,6 +39,10 @@ class FriendList extends React.Component {
   // 友達一覧をリスト表示
   render() {
     const {friends} = this.state // const friends = this.state.friendsと同じ
+
+    // if (friends.length) { // ReceriverIdの初期値取得
+    //   this.state.ReceiverId = friends[0].id
+    // }
 
     if (friends.length) { // 空オブジェクトの場合は表示しない
       const authenticityToken = $('meta[name=csrf-token]').attr('content')
