@@ -3,6 +3,7 @@ import BaseRouter from '../base/router'
 import App from '../components/messages/app'
 import GetCurrentUserAction from '../actions/getCurrentUser'
 import GetSearchFriendAction from '../actions/searchFriend'
+import GetMessagesAction from '../actions/messages'
 
 export default class MessageRouter extends BaseRouter {
   register() {
@@ -14,6 +15,7 @@ export default class MessageRouter extends BaseRouter {
     // アクション呼び出しにより初期値を取得
     GetCurrentUserAction.getCurrentUser()
     GetSearchFriendAction.getSearchFriendResult()
+    GetMessagesAction.getMessage()
     next()
   }
 }

@@ -4,7 +4,7 @@ import Dispatcher from '../dispatcher'
 
 export default {
   // getアクション
-  getMessage() {
+  getMessage() { // userのメッセージをすべて取得する
     return new Promise((resolve, reject) => {
       request
         .get('/api/messages.json')
@@ -23,7 +23,7 @@ export default {
     })
   },
   // postアクション
-  postMessage(text, sender_id, receiver_id) {
+  postMessage(text) {
     return new Promise((resolve, reject) => {
       request
         .post(`${APIEndpoints.MESSAGE}`)
