@@ -51,7 +51,7 @@ export default class SearchResult extends React.Component {
             <div className='search_user_list_result'>
               <img
                 className='search_user_list_result_image'
-                src='/app/assets/images/default_image.jpg'
+                src='/assets/default_image.jpg'
                 alt=''
               />
               <span>{user.name}</span>

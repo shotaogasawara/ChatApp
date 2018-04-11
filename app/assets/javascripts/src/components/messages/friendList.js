@@ -55,7 +55,7 @@ class FriendList extends React.Component {
               <input type='submit' value='×' className='remove-chat-btn'/>
             </form>
             <div className='user-list__item__picture'>
-              <img src='default_image.jpg' alt='default picture'/>
+              <img src='/assets/default_image.jpg' alt=''/>
             </div>
             <div className='user-list__item__details'>
               <div className='user-list__item__name'>
