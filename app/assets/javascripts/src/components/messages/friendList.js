@@ -32,10 +32,9 @@ class FriendList extends React.Component {
   // 名前をクリックするとリンクに飛ぶ
   visitFriend(user_id) {
     if (confirm('リンク先に移動しても良いですか？') === true) {
-      location.replace(`http://localhost:3000/#`)
+      location.replace(`http://localhost:3000/users/${user_id}`)
     }
   }
-
   // 友達一覧をリスト表示
   render() {
     const {friends} = this.state
@@ -43,17 +42,35 @@ class FriendList extends React.Component {
     // const friends = this.state.friends
 
     if (friends.length) { // 空オブジェクトの場合は表示しない
+      const authenticityToken = $('meta[name=csrf-token]').attr('content')
+
       const friendsList = friends.map(friend => {
         return (
-          <li onClick={this.visitFriend.bind(this, friend.id)}>
-            {friend.name}
+          <li
+            onClick={this.visitFriend.bind(this, friend.id)}
+            className='user-list__item clear'
+          >
+            <form action={`friendships/delete?user_id=${ friend.id }`} method='post'>
+              <input type='hidden' name='authenticity_token' value={authenticityToken} />
+              <input type='submit' value='×' className='remove-chat-btn'/>
+            </form>
+            <div className='user-list__item__picture'>
+              <img src='default_image.jpg' alt='default picture'/>
+            </div>
+            <div className='user-list__item__details'>
+              <div className='user-list__item__name'>
+                <a href={`users/${friend.id}`} className='user-list-name'>
+                  {friend.name}
+                </a>
+              </div>
+            </div>
           </li>
         )
       })
 
       return (
         <div className='user-list'>
-          <ul className={'search_user_list'}>
+          <ul className={'user-list__list'}>
             {friendsList}
           </ul>
         </div>

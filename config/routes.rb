@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'friendships/create'
-  get 'friendships/delete'
+  post 'friendships/delete'
   get 'users/search'
 
   get 'api/friendships/get_friend'

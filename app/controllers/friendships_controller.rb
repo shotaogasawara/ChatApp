@@ -12,4 +12,5 @@ class FriendshipsController < ApplicationController
     fs.destroy
     redirect_to '/'
   end
+
 end

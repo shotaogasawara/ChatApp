@@ -24,6 +24,7 @@ export default class SearchResult extends React.Component {
   onStoreChange() {
     this.setState(this.getStateFromStore())
   }
+
   // 名前をクリックすると友達になれる
   becomeFriend(user_id) {
     if (confirm('本当に友達になりますか？') === true) {
@@ -34,19 +35,35 @@ export default class SearchResult extends React.Component {
   // ユーザ一覧をリスト表示
   render() {
     const users = SearchResultStore.getSearchUser()
+    // const authenticityToken = $('meta[name=csrf-token]').attr('content')
+
     if (users.length) { // 空オブジェクトの場合は表示しない
       const usersList = users.map(user => {
         return (
-          <li onClick={this.becomeFriend.bind(this, user.id)}>{user.name}</li>
+          <li
+            className='search_user_list_item'
+            onClick={this.becomeFriend.bind(this, user.id)}
+          >
+            {/*<form action={`/friendships/create?user_id=${ user.id }`} method='post'>*/}
+              {/*<input type='hidden' name='authenticity_token' value={authenticityToken} />*/}
+              {/*<input type='submit' value='●' className=''/>*/}
+            {/*</form>*/}
+            <div className='search_user_list_result'>
+              <img
+                className='search_user_list_result_image'
+                src='/app/assets/images/default_image.jpg'
+                alt=''
+              />
+              <span>{user.name}</span>
+            </div>
+          </li>
         )
       })
 
       return (
-        <div className='users-list'>
-          <ul className={'search_user_list'}>
-            {usersList}
-          </ul>
-        </div>
+        <ul className='search_user_list'>
+          {usersList}
+        </ul>
       )
     } else {
       return (
