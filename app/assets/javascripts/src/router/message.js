@@ -11,6 +11,7 @@ export default class MessageRouter extends BaseRouter {
 
   decorateApp(ctx, next) {
     (new ReactDecorator()).decorate('react-main', App)
+    // アクション呼び出しにより初期値を取得
     GetCurrentUserAction.getCurrentUser()
     GetSearchFriendAction.getSearchFriendResult()
     next()

@@ -6,7 +6,6 @@ class FriendList extends React.Component {
     super(props)
     this.state = this.initialState
   }
-
   get initialState() {
     return this.getStateFromStore()
   }
@@ -14,6 +13,7 @@ class FriendList extends React.Component {
   getStateFromStore() {
     return {
       friends: SearchFriendsStore.getFriends(),
+      ReceiverId: '', // ここ、初期値を取得したいところ
     }
   }
 
@@ -29,17 +29,16 @@ class FriendList extends React.Component {
     this.setState(this.getStateFromStore())
   }
 
-  // 名前をクリックするとリンクに飛ぶ
-  visitFriend(user_id) {
-    if (confirm('リンク先に移動しても良いですか？') === true) {
-      location.replace(`http://localhost:3000/users/${user_id}`)
-    }
+  // 名前をクリックするとReceiverを更新
+  changeReceiver(user_id) {
+    this.setState({
+      ReceiverId: user_id,
+    })
   }
+
   // 友達一覧をリスト表示
   render() {
-    const {friends} = this.state
-    // 上は下と同じ
-    // const friends = this.state.friends
+    const {friends} = this.state // const friends = this.state.friendsと同じ
 
     if (friends.length) { // 空オブジェクトの場合は表示しない
       const authenticityToken = $('meta[name=csrf-token]').attr('content')
@@ -47,11 +46,11 @@ class FriendList extends React.Component {
       const friendsList = friends.map(friend => {
         return (
           <li
-            onClick={this.visitFriend.bind(this, friend.id)}
+            onClick={this.changeReceiver.bind(this, friend.id)}
             className='user-list__item clear'
           >
             <form action={`friendships/delete?user_id=${ friend.id }`} method='post'>
-              <input type='hidden' name='authenticity_token' value={authenticityToken} />
+              <input type='hidden' name='authenticity_token' value={authenticityToken}/>
               <input type='submit' value='×' className='remove-chat-btn'/>
             </form>
             <div className='user-list__item__picture'>
@@ -73,6 +72,7 @@ class FriendList extends React.Component {
           <ul className={'user-list__list'}>
             {friendsList}
           </ul>
+          {this.state.ReceiverId}
         </div>
       )
     } else {

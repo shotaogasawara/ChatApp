@@ -19,9 +19,6 @@ export default class SearchBox extends React.Component {
   handleKeyDown(e) {
     if (e.keyCode === 13) {
       SearchUserAction.getSearchUserResult(this.state.searchWord) // 入力ワードのDB検索結果を取得
-      // this.setState({ // 検索ボックスは空にする
-      //   searchWord: '',
-      // })
     }
   }
 

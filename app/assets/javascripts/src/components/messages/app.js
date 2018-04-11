@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './header'
-import UserList from './userList'
 import MessagesBox from './messagesBox'
 import UserStore from '../../stores/user'
 import FriendList from './friendList'
@@ -31,8 +30,7 @@ class App extends React.Component {
     return (
         <div className='app'>
           <Header />
-          {/*<UserList user={this.state.currentUser}/>*/}
-          <MessagesBox user={this.state.currentUser}/>
+          <MessagesBox user={this.state.currentUser} />
           <FriendList />
         </div>
       )
