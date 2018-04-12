@@ -31,9 +31,9 @@ class FriendList extends React.Component {
     this.setState(this.getStateFromStore())
   }
 
-  changeReceiver(user_id) {  // 名前をクリックするとReceiverを更新してメッセージを再表示
-    CurrentReceiverAction.setCurrentReceiver(user_id) // Receiver更新
-    GetMessagesAction.getMessage(this.props.currentUser.id, user_id) // メッセージ取得
+  changeReceiver(selectedFriend) {  // 名前をクリックするとReceiverを更新してメッセージを再表示
+    CurrentReceiverAction.setCurrentReceiver(selectedFriend) // Receiver更新
+    GetMessagesAction.getMessage(this.props.currentUser.id, selectedFriend.id) // メッセージ取得
   }
 
   render() {  // 友達一覧をリスト表示
@@ -45,7 +45,7 @@ class FriendList extends React.Component {
       const friendsList = friends.map(friend => {
         return (
           <li
-            onClick={this.changeReceiver.bind(this, friend.id)}
+            onClick={this.changeReceiver.bind(this, friend)}
             className='user-list__item clear'
           >
             <form action={`friendships/delete?user_id=${ friend.id }`} method='post'>
@@ -71,7 +71,7 @@ class FriendList extends React.Component {
           <ul className={'user-list__list'}>
             {friendsList}
           </ul>
-          {this.state.ReceiverId}
+          {this.props.currentReceiver.id}
         </div>
       )
     } else {

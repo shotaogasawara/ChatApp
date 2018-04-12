@@ -27,8 +27,8 @@ ReceiverStore.dispatchToken = Dispatcher.register(payload => {
   const action = payload.action
 
   switch (action.type) {
-    case ActionTypes.GET_CURRENT_RECEIVER:
-      ReceiverStore.setCurrentReceiver(action.json)
+    case ActionTypes.SET_SELECTED_FRIEND:
+      ReceiverStore.setCurrentReceiver(action.selectedFriend)
       ReceiverStore.emitChange()
       break
   }

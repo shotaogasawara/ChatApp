@@ -10,6 +10,7 @@ export const ActionTypes = keyMirror({
   GET_CURRENT_RECEIVER: null,
   GET_FRIEND: null,
   GET_SEARCH_FRIEND_RESULT: null,
+  SET_SELECTED_FRIEND: null,
 })
 
 export function CSRFToken() {

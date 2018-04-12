@@ -10,10 +10,11 @@ export default {
   //     currentUser: currentUser,
   //   })
   // },
-  setCurrentReceiver(receiver) {
-    ReceiverStore.setCurrentReceiver(receiver)
+  setCurrentReceiver(selectedFriend) {
+    ReceiverStore.setCurrentReceiver(selectedFriend)
     Dispatcher.handleViewAction({
-      type: ActionTypes.SET_CURRENT_RECEIVER,
+      type: ActionTypes.SET_SELECTED_FRIEND,
+      selectedFriend,
     })
   },
 }

@@ -24,12 +24,12 @@ export default {
     })
   },
   // postアクション
-  postMessage(message) {
+  postMessage(sender_id, receiver_id, message) {
     return new Promise((resolve, reject) => {
       request
         .post(`${APIEndpoints.MESSAGE}`)
         .set('X-CSRF-Token', CSRFToken())
-        .send({ content: message, sender_id: 1, receiver_id: 2 })
+        .send({sender_id: sender_id, receiver_id: receiver_id, content: message})
         .end((error, res) => {
           if (!error && res.status === 200) {
             console.log('postに成功しました。')
