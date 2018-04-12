@@ -13,6 +13,7 @@
             %span.caret
           %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
             %li
-              %a{:href => "<haml_loud"} "/users/\#{current_user.id}" &gt;マイページ
+              = link_to "マイページ", "/users/#{current_user.id}"
+              -#%a{:href => "<haml_loud"} "/users/\#{current_user.id}" &gt;マイページ
             %li
               = link_to "ログアウト", "/users/sign_out", :method => :delete

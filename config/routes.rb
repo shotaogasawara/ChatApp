@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  # resources :users, :only => [:index, :show]
+  resources :users, :only => [:index, :show]
   resources :messages
   root to: 'messages#index'
 
