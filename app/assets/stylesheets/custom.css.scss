@@ -150,3 +150,8 @@ li {
   display: list-item;
   text-align: -webkit-match-parent;
 }
+
+.clear:before, .clear:after {
+  content: ' ';
+  display: table;
+}

@@ -39,7 +39,7 @@ class MessagesBox extends React.Component {
     const chatsList = messages.map(message => {
       if (message.sender_id === this.props.currentUser.id) {
         return (
-          <li className='message-box__item message-box__item--from-current'>
+          <li className='message-box__item message-box__item--from-current clear'>
             <div className='message-box__item__contents message-box__item--from-current'>
               {message.content}
             </div>
@@ -47,7 +47,7 @@ class MessagesBox extends React.Component {
         )
       } else {
         return (
-          <li className='message-box__item'>
+          <li className='message-box__item clear'>
             <div className='message-box__item__contents'>
               {message.content}
             </div>
