@@ -60,7 +60,7 @@ class MessagesBox extends React.Component {
         <ul className='message-box__list'>
           {chatsList}
         </ul>
-        <ReplyBox currentUser={this.props.currentUser} currentReceiver={this.props.currentReceiver}/>,
+        <ReplyBox currentUser={this.props.currentUser} selectedFriend={this.props.selectedFriend}/>,
       </div>
     )
   }

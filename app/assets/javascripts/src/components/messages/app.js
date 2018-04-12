@@ -2,7 +2,7 @@ import React from 'react'
 import MessagesBox from './messagesBox'
 import UserStore from '../../stores/user'
 import FriendList from './friendList'
-import ReceiverStore from '../../stores/receiver'
+import SelectedFriendStore from '../../stores/selectedFriend'
 
 class App extends React.Component {
   constructor(props) {
@@ -17,18 +17,18 @@ class App extends React.Component {
   getStateFromStore() {
     return {
       currentUser: UserStore.getCurrentUser(),
-      currentReceiver: ReceiverStore.getCurrentReceiver(),
+      selectedFriend: SelectedFriendStore.getSelectedFriend(),
     }
   }
 
   componentWillMount() {
     UserStore.onChange(this.onStoreChange.bind(this))
-    ReceiverStore.onChange(this.onStoreChange.bind(this))
+    SelectedFriendStore.onChange(this.onStoreChange.bind(this))
   }
 
   componentWillUnmount() {
     UserStore.offChange(this.onStoreChange.bind(this))
-    ReceiverStore.offChange(this.onStoreChange.bind(this))
+    SelectedFriendStore.offChange(this.onStoreChange.bind(this))
   }
 
   onStoreChange() {
@@ -36,11 +36,11 @@ class App extends React.Component {
   }
 
   render() {
-    const {currentUser, currentReceiver} = this.state
+    const {currentUser, selectedFriend} = this.state
     return (
       <div className='app'>
-        <MessagesBox currentUser={currentUser} currentReceiver={currentReceiver}/>
-        <FriendList currentUser={currentUser} currentReceiver={currentReceiver}/>
+        <MessagesBox currentUser={currentUser} selectedFriend={selectedFriend}/>
+        <FriendList currentUser={currentUser} selectedFriend={selectedFriend}/>
       </div>
     )
   }

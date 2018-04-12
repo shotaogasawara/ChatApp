@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchFriendsStore from '../../stores/searchFriends'
 import GetMessagesAction from '../../actions/messages'
-import CurrentReceiverAction from '../../actions/currentReceiver'
+import SelectedFriendAction from '../../actions/selectedFriend'
 
 class FriendList extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class FriendList extends React.Component {
   }
 
   changeReceiver(selectedFriend) {  // 名前をクリックするとReceiverを更新してメッセージを再表示
-    CurrentReceiverAction.setCurrentReceiver(selectedFriend) // Receiver更新
+    SelectedFriendAction.setCurrentSelectedFriend(selectedFriend) // Receiver更新
     GetMessagesAction.getMessage(this.props.currentUser.id, selectedFriend.id) // メッセージ取得
   }
 
@@ -71,7 +71,7 @@ class FriendList extends React.Component {
           <ul className={'user-list__list'}>
             {friendsList}
           </ul>
-          {this.props.currentReceiver.id}
+          {this.props.selectedFriend.id}
         </div>
       )
     } else {
