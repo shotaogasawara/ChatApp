@@ -1,7 +1,7 @@
 import ReactDecorator from '../base/react_decorator'
 import BaseRouter from '../base/router'
 import App from '../components/messages/app'
-import GetCurrentUserAction from '../actions/getCurrentUser'
+import GetCurrentUserAction from '../actions/currentUser'
 import GetSearchFriendAction from '../actions/searchFriend'
 
 export default class MessageRouter extends BaseRouter {
