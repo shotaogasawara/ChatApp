@@ -33,21 +33,10 @@ export default {
         .end((error, res) => {
           if (!error && res.status === 200) {
             console.log('postに成功しました。')
-            // const json = JSON.parse(res.text)
-            // Dispatcher.handleServerAction({ // Dipatcherにペイロードを渡す
-            //   type: ActionTypes.POST_MESSAGE,
-            //   json,
-            // })
           } else {
             reject(res)
           }
         })
     })
   },
-  // sendMessage(message) { //
-  //   Dispatcher.handleViewAction({
-  //     type: ActionTypes.SEND_MESSAGE,
-  //     message: message,
-  //   })
-  // },
 }
