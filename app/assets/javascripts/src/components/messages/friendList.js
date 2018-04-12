@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchFriendsStore from '../../stores/searchFriends'
+import GetMessagesAction from '../../actions/messages'
 
 class FriendList extends React.Component {
   constructor(props) {
@@ -34,6 +35,8 @@ class FriendList extends React.Component {
     this.setState({
       ReceiverId: user_id,
     })
+
+    GetMessagesAction.getMessage(this.props.currentUser.id, user_id) // メッセージを取得
   }
 
   // 友達一覧をリスト表示

@@ -8,6 +8,7 @@ export default {
     return new Promise((resolve, reject) => {
       request
         .get('/api/messages.json')
+        .query({sender_id: sender_id, receiver_id: receiver_id})
         .end((error, res) => {
           if (!error && res.status === 200) {
             const json = JSON.parse(res.text)

@@ -31,7 +31,7 @@ class App extends React.Component {
         <div className='app'>
           <Header />
           <MessagesBox user={this.state.currentUser} />
-          <FriendList />
+          <FriendList currentUser={this.state.currentUser} />
         </div>
       )
   }
