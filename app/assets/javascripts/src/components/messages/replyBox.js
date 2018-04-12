@@ -1,7 +1,6 @@
 import React from 'react'
 import MessagesStore from '../../stores/messages'
 import MessagesAction from '../../actions/messages'
-import UserStore from '../../stores/user'
 import GetMessagesAction from '../../actions/messages'
 
 class ReplyBox extends React.Component {
@@ -18,9 +17,8 @@ class ReplyBox extends React.Component {
   }
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      const currentUser = UserStore.getCurrentUser()
       MessagesAction.postMessage(this.state.value) // メッセージをrailsにpostする
-      GetMessagesAction.getMessage(currentUser.id, 2) // メッセージを取得
+      GetMessagesAction.getMessage(this.props.currentUser.id, this.props.currentReceiver.id) // メッセージを取得
       this.setState({
         value: '',
       })

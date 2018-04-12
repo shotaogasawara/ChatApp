@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchFriendsStore from '../../stores/searchFriends'
 import GetMessagesAction from '../../actions/messages'
+import CurrentReceiverAction from '../../actions/currentReceiver'
 
 class FriendList extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class FriendList extends React.Component {
   getStateFromStore() {
     return {
       friends: SearchFriendsStore.getFriends(),
-      ReceiverId: '',
     }
   }
 
@@ -30,13 +30,13 @@ class FriendList extends React.Component {
     this.setState(this.getStateFromStore())
   }
 
-  // 名前をクリックするとReceiverを更新
+  // 名前をクリックするとReceiverを更新してメッセージを再表示
   changeReceiver(user_id) {
-    this.setState({
-      ReceiverId: user_id,
-    })
-
-    GetMessagesAction.getMessage(this.props.currentUser.id, user_id) // メッセージを取得
+    // this.setState({
+    //   ReceiverId: user_id,
+    // })
+    CurrentReceiverAction.setCurrentReceiver(user_id) // Receiver更新
+    GetMessagesAction.getMessage(this.props.currentUser.id, user_id) // メッセージ取得
   }
 
   // 友達一覧をリスト表示
