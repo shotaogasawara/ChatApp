@@ -10,35 +10,41 @@ class App extends React.Component {
     super(props)
     this.state = this.initialState
   }
+
   get initialState() {
     return this.getStateFromStore()
   }
+
   getStateFromStore() {
     return {
       currentUser: UserStore.getCurrentUser(),
       currentReceiver: ReceiverStore.getCurrentReceiver(),
     }
   }
+
   componentWillMount() {
     UserStore.onChange(this.onStoreChange.bind(this))
     ReceiverStore.onChange(this.onStoreChange.bind(this))
   }
+
   componentWillUnmount() {
     UserStore.offChange(this.onStoreChange.bind(this))
     ReceiverStore.offChange(this.onStoreChange.bind(this))
   }
+
   onStoreChange() {
     this.setState(this.getStateFromStore())
   }
+
   render() {
     const {currentUser, currentReceiver} = this.state
     return (
-        <div className='app'>
-          <Header />
-          <MessagesBox currentUser={currentUser} currentReceiver={currentReceiver} />
-          <FriendList currentUser={currentUser} currentReceiver={currentReceiver} />
-        </div>
-      )
+      <div className='app'>
+        <Header/>
+        <MessagesBox currentUser={currentUser} currentReceiver={currentReceiver}/>
+        <FriendList currentUser={currentUser} currentReceiver={currentReceiver}/>
+      </div>
+    )
   }
 }
 

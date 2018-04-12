@@ -8,6 +8,7 @@ class FriendList extends React.Component {
     super(props)
     this.state = this.initialState
   }
+
   get initialState() {
     return this.getStateFromStore()
   }
@@ -30,22 +31,13 @@ class FriendList extends React.Component {
     this.setState(this.getStateFromStore())
   }
 
-  // 名前をクリックするとReceiverを更新してメッセージを再表示
-  changeReceiver(user_id) {
-    // this.setState({
-    //   ReceiverId: user_id,
-    // })
+  changeReceiver(user_id) {  // 名前をクリックするとReceiverを更新してメッセージを再表示
     CurrentReceiverAction.setCurrentReceiver(user_id) // Receiver更新
     GetMessagesAction.getMessage(this.props.currentUser.id, user_id) // メッセージ取得
   }
 
-  // 友達一覧をリスト表示
-  render() {
+  render() {  // 友達一覧をリスト表示
     const {friends} = this.state // const friends = this.state.friendsと同じ
-
-    // if (friends.length) { // ReceriverIdの初期値取得
-    //   this.state.ReceiverId = friends[0].id
-    // }
 
     if (friends.length) { // 空オブジェクトの場合は表示しない
       const authenticityToken = $('meta[name=csrf-token]').attr('content')

@@ -35,7 +35,6 @@ export default class SearchResult extends React.Component {
   // ユーザ一覧をリスト表示
   render() {
     const users = SearchResultStore.getSearchUser()
-    // const authenticityToken = $('meta[name=csrf-token]').attr('content')
 
     if (users.length) { // 空オブジェクトの場合は表示しない
       const usersList = users.map(user => {
@@ -45,8 +44,8 @@ export default class SearchResult extends React.Component {
             onClick={this.becomeFriend.bind(this, user.id)}
           >
             {/*<form action={`/friendships/create?user_id=${ user.id }`} method='post'>*/}
-              {/*<input type='hidden' name='authenticity_token' value={authenticityToken} />*/}
-              {/*<input type='submit' value='●' className=''/>*/}
+            {/*<input type='hidden' name='authenticity_token' value={authenticityToken} />*/}
+            {/*<input type='submit' value='●' className=''/>*/}
             {/*</form>*/}
             <div className='search_user_list_result'>
               <img

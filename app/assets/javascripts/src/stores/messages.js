@@ -32,15 +32,6 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
       MessagesStore.emitChange()
       break
 
-    // case ActionTypes.SEND_MESSAGE: // Storeに新しいメッセージを追加
-    //   const user = UserStore.getCurrentUser()
-    //   messages[userID].messages.push({
-    //     contents: action.message,
-    //     from: user.id,
-    //   })
-    //   messages[userID].lastAccess.currentUser = +new Date()
-    //   MessagesStore.emitChange()
-    //   break
   }
   return true
 })

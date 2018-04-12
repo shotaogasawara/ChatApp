@@ -8,7 +8,7 @@ export default {
     return new Promise((resolve, reject) => {
       request
         .get(`${APIEndpoints.SEARCH_USER}`)
-        .query({ user_name: query })
+        .query({user_name: query})
         .end((error, res) => {
           if (!error && res.status === 200) {
             const json = JSON.parse(res.text)
