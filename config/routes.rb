@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'api/friendships/get_friend'
   get 'api/users/get_current_user'
   get 'api/users/search'
-  # get 'api/messages/get_chat'
 
   devise_for :users
 
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users, :only => [:index, :show]
+  # resources :users, :only => [:index, :show]
   resources :messages
   root to: 'messages#index'
 

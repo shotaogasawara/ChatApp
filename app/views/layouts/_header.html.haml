@@ -15,4 +15,4 @@
             %li
               %a{:href => "<haml_loud"} "/users/\#{current_user.id}" &gt;マイページ
             %li
-              %a{:href => "/users/sign_out"} ログアウト
+              = link_to "ログアウト", "/users/sign_out", :method => :delete
