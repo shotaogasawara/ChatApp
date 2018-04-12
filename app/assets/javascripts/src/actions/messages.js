@@ -24,19 +24,18 @@ export default {
     })
   },
   // postアクション
-  postMessage(text) {
+  postMessage(message) {
     return new Promise((resolve, reject) => {
       request
         .post(`${APIEndpoints.MESSAGE}`)
         .set('X-CSRF-Token', CSRFToken())
-        .send({ content: text, sender_id: 1, receiver_id: 2 })
+        .send({ content: message, sender_id: 1, receiver_id: 2 })
         .end((error, res) => {
           if (!error && res.status === 200) {
             console.log('postに成功しました。')
             // const json = JSON.parse(res.text)
             // Dispatcher.handleServerAction({ // Dipatcherにペイロードを渡す
             //   type: ActionTypes.POST_MESSAGE,
-            //   message,
             //   json,
             // })
           } else {
@@ -45,20 +44,10 @@ export default {
         })
     })
   },
-  //
-  changeOpenChat(newUserID) {
-    Dispatcher.handleViewAction({
-      type: ActionTypes.UPDATE_OPEN_CHAT_ID,
-      userID: newUserID,
-    })
-  },
-  //
-  sendMessage(userID, message) {
-    Dispatcher.handleViewAction({
-      type: ActionTypes.SEND_MESSAGE,
-      userID: userID,
-      message: message,
-      timestamp: +new Date(),
-    })
-  },
+  // sendMessage(message) { //
+  //   Dispatcher.handleViewAction({
+  //     type: ActionTypes.SEND_MESSAGE,
+  //     message: message,
+  //   })
+  // },
 }
