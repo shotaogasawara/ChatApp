@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './header'
 import MessagesBox from './messagesBox'
 import UserStore from '../../stores/user'
 import FriendList from './friendList'
@@ -40,7 +39,6 @@ class App extends React.Component {
     const {currentUser, currentReceiver} = this.state
     return (
       <div className='app'>
-        <Header/>
         <MessagesBox currentUser={currentUser} currentReceiver={currentReceiver}/>
         <FriendList currentUser={currentUser} currentReceiver={currentReceiver}/>
       </div>
