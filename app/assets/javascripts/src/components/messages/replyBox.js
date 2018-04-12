@@ -15,11 +15,13 @@ class ReplyBox extends React.Component {
   }
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      MessagesAction.postMessage(this.props.currentUser.id, this.props.currentReceiver.id, this.state.value) // メッセージをrailsにpostする
-      GetMessagesAction.getMessage(this.props.currentUser.id, this.props.currentReceiver.id) // メッセージを取得
-      this.setState({
-        value: '',
-      })
+      if (this.state.value) { // 空文字は発火させない
+        MessagesAction.postMessage(this.props.currentUser.id, this.props.currentReceiver.id, this.state.value) // メッセージをrailsにpostする
+        GetMessagesAction.getMessage(this.props.currentUser.id, this.props.currentReceiver.id) // メッセージを取得
+        this.setState({
+          value: '',
+        })
+      }
     }
   }
   updateValue(e) {
