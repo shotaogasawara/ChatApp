@@ -12,7 +12,7 @@ class GetMessagesStore extends BaseStore {
   }
 
   getMessages() {
-    if (!this.get('messagesJson')) this.setMessages({})
+    if (!this.get('messagesJson')) this.setMessages([])
     return this.get('messagesJson')
   }
 

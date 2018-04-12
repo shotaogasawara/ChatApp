@@ -4,7 +4,7 @@ import Dispatcher from '../dispatcher'
 
 export default {
   // getアクション
-  getMessage() { // userのメッセージをすべて取得する
+  getMessage(sender_id, receiver_id) { // userのメッセージをすべて取得する
     return new Promise((resolve, reject) => {
       request
         .get('/api/messages.json')

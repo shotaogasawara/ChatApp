@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'api/friendships/get_friend'
   get 'api/users/get_current_user'
   get 'api/users/search'
+  # get 'api/messages/get_chat'
+
   devise_for :users
 
   namespace :api, { format: 'json' } do

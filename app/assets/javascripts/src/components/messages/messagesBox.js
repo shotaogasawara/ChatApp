@@ -17,7 +17,10 @@ class MessagesBox extends React.Component {
   }
 
   getStateFromStore() {
-    return MessagesStore.getMessages() // ここでstoreからメッセージを取得する
+    // return MessagesStore.getMessages() // ここでstoreから全メッセージを取得する
+    return {
+      messages: MessagesStore.getMessages()
+    }
   }
 
   componentWillMount() {
@@ -34,7 +37,26 @@ class MessagesBox extends React.Component {
 
   //
   render() {
-    console.log(this.state)
+    var allMessages = this.state.messages
+    allMessages.forEach((message) => {
+      console.log(message.content) // メッセージ取得はできていることを確認
+    })
+
+    // var currentUserID = this.props.user.id
+    // // console.log(currentUserID)
+    // var messagesLength = Object.keys(allMessages).length
+    // // console.log(messagesLength)
+    // var messages = Object.keys(allMessages).map((message) => {
+    //   console.log(message.content)
+    //   return (
+    //     <li>
+    //       {message.content}
+    //     </li>
+    //   )
+    // })
+   // console.log(messages)
+
+
     // const messagesLength = this.state.messages.length
     // const currentUserID = this.props.user.id
     // const messages = this.state.messages.map((message, index) => { // stateからmessageを取り出す
@@ -70,7 +92,6 @@ class MessagesBox extends React.Component {
     return (
       <div className='message-box'>
         <ul className='message-box__list'>
-          {/*{messages}*/}
         </ul>
         <ReplyBox />,
       </div>
