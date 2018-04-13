@@ -23,16 +23,33 @@ export default {
         })
     })
   },
-  // postアクション
+  postImage(sender_id, receiver_id, picture) {
+    return new Promise((resolve, reject) => {
+      request
+        .post(`${APIEndpoints.MESSAGE}`)
+        .set('X-CSRF-Token', CSRFToken())
+        .attach('picture', picture, picture.name)
+        .query({receiver_id: receiver_id})
+        .query({sender_id: sender_id})
+        .query({content: null})
+        .end((error, res) => {
+          if (!error && res.status === 200) {
+            console.log('imgのpostに成功しました。')
+          } else {
+            reject(res)
+          }
+        })
+    })
+  },
   postMessage(sender_id, receiver_id, message) {
     return new Promise((resolve, reject) => {
       request
         .post(`${APIEndpoints.MESSAGE}`)
         .set('X-CSRF-Token', CSRFToken())
-        .send({sender_id: sender_id, receiver_id: receiver_id, content: message})
+        .send({sender_id: sender_id, receiver_id: receiver_id, content: message, picture: null})
         .end((error, res) => {
           if (!error && res.status === 200) {
-            console.log('postに成功しました。')
+            console.log('messageのpostに成功しました。')
           } else {
             reject(res)
           }

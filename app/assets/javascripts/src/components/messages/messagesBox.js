@@ -38,23 +38,44 @@ class MessagesBox extends React.Component {
     const {messages} = this.state
     const chatsList = messages.map(message => {
       if (message.sender_id === this.props.currentUser.id) {
-        return (
-          <li className='message-box__item message-box__item--from-current clear'>
-            <div className='message-box__item__contents message-box__item--from-current'>
-              {message.content}
-            </div>
-          </li>
-        )
+        if (message.picture.url) { // pictureの表示
+          return (
+            <li className='message-box__item message-box__item--from-current clear'>
+              <div className='message-box__item__contents message-box__item--from-current'>
+                <img src={message.picture.url}/>
+              </div>
+            </li>
+          )
+        } else {
+          return ( // messageの表示
+            <li className='message-box__item message-box__item--from-current clear'>
+              <div className='message-box__item__contents message-box__item--from-current'>
+                {message.content}
+              </div>
+            </li>
+          )
+        }
       } else {
-        return (
-          <li className='message-box__item clear'>
-            <div className='message-box__item__contents'>
-              {message.content}
-            </div>
-          </li>
-        )
+        if (message.picture.url) { // pictureの表示
+          return (
+            <li className='message-box__item clear'>
+              <div className='message-box__item__contents'>
+                <img src={message.picture.url}/>
+              </div>
+            </li>
+          )
+        } else { // messageの表示
+          return (
+            <li className='message-box__item clear'>
+              <div className='message-box__item__contents'>
+                {message.content}
+              </div>
+            </li>
+          )
+        }
       }
     })
+
     return (
       <div className='message-box'>
         <ul className='message-box__list'>
