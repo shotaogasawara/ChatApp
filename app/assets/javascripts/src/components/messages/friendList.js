@@ -34,6 +34,7 @@ class FriendList extends React.Component {
   changeReceiver(selectedFriend) {  // 名前をクリックするとReceiverを更新してメッセージを再表示
     SelectedFriendAction.setCurrentSelectedFriend(selectedFriend) // Receiver更新
     GetMessagesAction.getMessage(this.props.currentUser.id, selectedFriend.id) // メッセージ取得
+    // JQueryでクラスを追加する
   }
 
   render() {  // 友達一覧をリスト表示
