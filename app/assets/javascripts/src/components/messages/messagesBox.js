@@ -1,9 +1,6 @@
 import React from 'react'
-import classNames from 'classNames'
 import MessagesStore from '../../stores/messages' // 追記
 import ReplyBox from '../../components/messages/replyBox'
-import Utils from '../../utils'
-import GetMessagesAction from '../../actions/messages'
 
 class MessagesBox extends React.Component {
 
@@ -37,7 +34,7 @@ class MessagesBox extends React.Component {
   render() {
     const {messages} = this.state
     const chatsList = messages.map(message => {
-      if (message.sender_id === this.props.currentUser.id) {
+      if (message.sender_id === this.props.currentUser.id) { // senderとreceiverでclassを切り替える
         if (message.picture.url) { // pictureの表示
           return (
             <li className='message-box__item message-box__item--from-current clear'>
