@@ -4,7 +4,7 @@
       %h2.new_user_title Chatを始めよう
       = devise_error_messages!
       .form-group
-        = f.text_field :name, class: "form-control", placeholder: "ユーザ名"
+        = f.text_field :name, class: "form-control", placeholder: "ユーザー名"
       .form-group
         = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "メールアドレス"
       .form-group
@@ -14,5 +14,5 @@
       .form-group.actions
         = f.submit "新規登録", class: "btn btn-info login_btn"
     = render "devise/shared/links"
-    .image_wrapper
-      = image_tag 'registrations_view-6909b817290cc9ee9fd66b876dbc458a3cad8dff379e6596c4b2d9443dbb1b95.png'
+  .image_wrapper
+    = image_tag 'registrations_view-6909b817290cc9ee9fd66b876dbc458a3cad8dff379e6596c4b2d9443dbb1b95.png'
